@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:manajement_kost/app/widgets/custom_bottom_nav.dart';
 import '../controllers/my_kos_controller.dart';
-
+import '../../profile/controllers/profile_controller.dart';
 class MyKosView extends GetView<MyKosController> {
   const MyKosView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final ProfileController profileController = Get.find<ProfileController>();
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -19,7 +21,7 @@ class MyKosView extends GetView<MyKosController> {
                 // Greeting
                 Obx(
                   () => Text(
-                    'Hello ${controller.userName.value}!',
+                    'Hello ${profileController.username.value}!', 
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),
