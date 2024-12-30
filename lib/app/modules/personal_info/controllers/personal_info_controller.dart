@@ -24,7 +24,7 @@ class PersonalInfoController extends GetxController {
   var isProfileImageChanged = false.obs;
   var isLoading = false.obs;
   
-  // Tambahkan variabel untuk menandai perubahan
+  
   var isDirty = false.obs;
   var tempData = <String, dynamic>{}.obs;
 
@@ -147,7 +147,7 @@ class PersonalInfoController extends GetxController {
       isLoading.value = true;
       String userId = _auth.currentUser!.uid;
 
-      // Validasi data
+      
       if (fullName.value.isEmpty || 
           gender.value == 'Select Gender' || 
           dateOfBirth.value == 'Select Date' || 
@@ -178,10 +178,10 @@ class PersonalInfoController extends GetxController {
             SetOptions(merge: true),
           );
 
-      // Reset flag isDirty
+      
       isDirty.value = false;
       
-      // Update ProfileController
+      
       await profileController.loadUserData();
 
       Get.snackbar(
@@ -207,10 +207,10 @@ class PersonalInfoController extends GetxController {
     }
   }
 
-  // Cancel changes
+  
   void cancelChanges() {
     if (isDirty.value) {
-      // Kembalikan data ke nilai awal
+      
       fullName.value = tempData['fullName'] ?? '';
       gender.value = tempData['gender'] ?? 'Select Gender';
       dateOfBirth.value = tempData['dateOfBirth'] ?? 'Select Date';
@@ -223,7 +223,7 @@ class PersonalInfoController extends GetxController {
     Get.back();
   }
 
-  // Update methods yang dimodifikasi untuk menandai perubahan
+  
   void updateFullName(String newName) {
     fullName.value = newName;
     isDirty.value = true;
@@ -249,7 +249,7 @@ class PersonalInfoController extends GetxController {
     isDirty.value = true;
   }
 
-  // UI methods
+  
   final List<String> genderOptions = ['Male', 'Female', 'Other'];
   final List<String> workOptions = [
     'Employee',
